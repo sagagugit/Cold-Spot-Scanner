@@ -745,7 +745,7 @@ def calcEnergyTerms(pdbsToAnalyze):
             line_file1 = f1.read()
             line_file2 = f2.read()
             line_file3 = f3.read()
-            print(line_file1,'\n', line_file2,'\n', line_file3,'\n', file=cold_file3)
+            print(str(line_file1),'\n', str(line_file2),'\n', str(line_file3),'\n', file=cold_file3)
 
             os.remove(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, "No_of_cold_spots_due_to_cavities.csv"))
             os.remove(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, "Cold spots residues due to CH interactions.csv"))

@@ -609,6 +609,7 @@ def calcEnergyTerms(pdbsToAnalyze):
             final_cold_spots.append(one[:3])
         final_only_cold_spots = [', '.join(map(str, x)) for x in set(final_cold_spots)]
         print('No of cold spots due to Charged Hydrophobic interactions :', len(final_only_cold_spots), file=cold_file)
+	print('PDB, Chain, Residue_number', file=cold_file)
         for two in final_only_cold_spots:
             print(two, file=cold_file)
 
@@ -745,7 +746,7 @@ def calcEnergyTerms(pdbsToAnalyze):
             line_file1 = f1.read()
             line_file2 = f2.read()
             line_file3 = f3.read()
-            print(str(line_file1),'\n', str(line_file2),'\n', str(line_file3),'\n', file=cold_file3)
+            print(line_file1,'\n', strline_file2,'\n', strline_file3,'\n', file=cold_file3)
 
             os.remove(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, "No_of_cold_spots_due_to_cavities.csv"))
             os.remove(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, "Cold spots residues due to CH interactions.csv"))

@@ -609,7 +609,7 @@ def calcEnergyTerms(pdbsToAnalyze):
             final_cold_spots.append(one[:3])
         final_only_cold_spots = [', '.join(map(str, x)) for x in set(final_cold_spots)]
         print('No of cold spots due to Charged Hydrophobic interactions :', len(final_only_cold_spots), file=cold_file)
-        print('PDB, Chain, Residue_number', file=cold_file)
+        print('PDB,Chain,Residue_number', file=cold_file)
         for two in final_only_cold_spots:
             print(two, file=cold_file)
 

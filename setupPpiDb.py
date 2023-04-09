@@ -695,6 +695,7 @@ def calcEnergyTerms(pdbsToAnalyze):
             final_same_cold_spots =[', '.join(map(str, x)) for x in s_cold_spot]
             print('No of cold spots due to Same Charge  interactions :', len(final_same_cold_spots), file=same_int)
 #            print('Identified charged residues which can act as cold spots due to SC interactions', file=same_int)
+            print('PDB,Chain,Residue_number', file=same_int)
             for one in final_same_cold_spots:
                 print(one, file=same_int)
 

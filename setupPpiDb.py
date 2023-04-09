@@ -743,7 +743,7 @@ def calcEnergyTerms(pdbsToAnalyze):
 
 
     with open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Identified_cold_spots.csv'),mode = 'w') as cold_file3:
-        with open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'No_of_cold_spots_due_to_cavities.csv')) as f1, open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold spots residues due to CH interactions.csv')) as f2, open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold spots due to SC_interactions.csv')) as f3:
+        with open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'No_of_cold_spots_due_to_cavities.csv')) as f1, open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold_spots_residues_due_to_CH_interactions.csv')) as f2, open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold_spots_due_to_SC_interactions.csv')) as f3:
             line_file1 = f1.read()
             line_file2 = f2.read()
             line_file3 = f3.read()

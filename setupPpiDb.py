@@ -566,10 +566,10 @@ def calcEnergyTerms(pdbsToAnalyze):
                 print((pdb.name + ',' + str(cavity_volume)), file=cavity_file)
 
 
-    if os.path.exists(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold_spots_residues_due to_CH_interactions.csv')):
+    if os.path.exists(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold_spots_residues_due_to_CH_interactions.csv')):
         print("Skipping Cold spots residues.csv")
 
-    if not os.path.exists(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold_spots_residues_due to_CH_interactions.csv')):
+    if not os.path.exists(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold_spots_residues_due_to_CH_interactions.csv')):
         print("Calculating Cold spots residues.csv")
         
         unfavroable_interactions_dict = get_unfavorable_interactions(pdbsNamesToChains, cursor)
@@ -597,7 +597,7 @@ def calcEnergyTerms(pdbsToAnalyze):
         final_unfavorable_residues_and_chains =  (set(unfavorable_residues_and_chains)- set(Total_sub_for_cold))
 
 
-    with open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold_spots_residues_due to_CH_interactions.csv'),mode = 'w') as cold_file:
+    with open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold_spots_residues_due_to_CH_interactions.csv'),mode = 'w') as cold_file:
         
         
         total_hydrohen_bond_energy = total_hydrogen_bonds(pdbsToAnalyze)
@@ -723,7 +723,7 @@ def calcEnergyTerms(pdbsToAnalyze):
                 print('color green, (sele)' , file=cold_file4)
 
         try:
-            Ch_df  = pd.read_csv(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, "Cold_spots_residues_due to_CH_interactions.csv"), sep=',', skiprows=1, header=None)
+            Ch_df  = pd.read_csv(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, "Cold_spots_residues_due_to_CH_interactions.csv"), sep=',', skiprows=1, header=None)
             Ch_df.columns = ["PDB", "chain", "residue"]
             for index, row in Ch_df.iterrows():
                 print('select resi ', row['residue'], "and chain ", row['chain'], file=cold_file4)
@@ -750,7 +750,7 @@ def calcEnergyTerms(pdbsToAnalyze):
             print(line_file1,'\n',line_file2,'\n',line_file3,'\n', file=cold_file3)
 
             os.remove(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, "No_of_cold_spots_due_to_cavities.csv"))
-  #          os.remove(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, "Cold_spots_residues_due to_CH_interactions.csv"))
+  #          os.remove(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, "Cold_spots_residues_due_to_CH_interactions.csv"))
  #           os.remove(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, "Cold_spots_due_to_SC_interactions.csv"))
 
 

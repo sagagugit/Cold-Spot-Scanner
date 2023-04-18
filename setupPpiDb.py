@@ -662,7 +662,7 @@ def calcEnergyTerms(pdbsToAnalyze):
                 try:
                     structure1 = parser.get_structure(pdb.file, '{}Sepereated_clusters.pdb'.format(pdbName[0:4]))
                 except ValueError as e:
-                    print("File is empty, There are no cold spots due to cavitites", e)
+                    print("File is empty, There are no cold spots due to cavitites")
                 structure1 = parser.get_structure(pdb.file, '{}Sepereated_clusters.pdb'.format(pdbName[0:4]))
                 structure2 = parser.get_structure(pdb.file, '%s_C.pdb' % pdbName[0:4])
                 structures = [structure1, structure2]

@@ -658,10 +658,11 @@ def calcEnergyTerms(pdbsToAnalyze):
             with open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cavities_with_the_complex.pdb'), mode='w') as open_file:
                 parser = PDBParser( PERMISSIVE=1)
                 pdb_io = PDBIO()
+                structure1 = None
                 try:
                     structure1 = parser.get_structure(pdb.file, '{}Sepereated_clusters.pdb'.format(pdbName[0:4]))
                 except ValueError as e:
-                    print("File is empty, There are no cold spots due to cavitites")
+                    print("File is empty, There are no cold spots due to cavitites", e)
                 structure1 = parser.get_structure(pdb.file, '{}Sepereated_clusters.pdb'.format(pdbName[0:4]))
                 structure2 = parser.get_structure(pdb.file, '%s_C.pdb' % pdbName[0:4])
                 structures = [structure1, structure2]

@@ -1,6 +1,6 @@
 ﻿# How to run cold spot scanner 
 
-[Link Text](https://colab.research.google.com/github/sagagugit/Cold-Spot-Scanner/blob/main/Cold_Spot_Scanner.ipynb)
+[Open in Colab](https://colab.research.google.com/github/sagagugit/Cold-Spot-Scanner/blob/main/Cold_Spot_Scanner.ipynb){: .btn .btn-yellow }
 
 About cold-spots in protein-protein interactions
 

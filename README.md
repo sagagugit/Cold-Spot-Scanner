@@ -14,4 +14,4 @@ interactions.
 (III) Cold spots at positions that exibit unfavorable Same charge
 interactions .
 
-[Link Text](https://colab.research.google.com/github/sagagugit/Cold-Spot-Scanner/blob/main/Cold Spot Scanner.ipynb)
+[Link Text](https://colab.research.google.com/github/sagagugit/Cold-Spot-Scanner/blob/main/Cold_Spot_Scanner.ipynb)

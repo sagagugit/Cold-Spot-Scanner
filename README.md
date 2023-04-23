@@ -13,5 +13,3 @@ interactions.
 
 (III) Cold spots at positions that exibit unfavorable Same charge
 interactions .
-
-[Link Text](https://github.com/sagagugit/Cold-Spot-Scanner/blob/main/Cold Spot Scanner.ipynb)

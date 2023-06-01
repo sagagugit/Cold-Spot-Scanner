@@ -25,3 +25,20 @@ Two options are possible for uploading the protein complex structure.
 1) The complex structure is downloaded directly from the PDB. Please input the "PDB ID" of the Protein complex and chain IDs to define the interface of the protein complex under the sub category "PDB ID and chains". If you mention chains that are not interacting, the program will generate an error message upon execution.
 
 2) The complex structure is uploaded from the user’s computer. To enable users to upload their own complex, kindly remove the comment symbols (#) from all lines in the section labeled "Uploading the complex instead of PDB ID". Once uncommented, the user can upload their desired complex upon execution. Before execution of the program, specify its corresponding four-letter name and chains under the "PDB ID and chains" subcategory. Please ensure that the name assigned to the uploaded complex is limited to a four-letter format, similar to that of a PDB ID.
+
+**Citing this work**
+
+
+Please cite the articles 
+
+1)J. Shirian, O. Sharabi, and J. M. Shifman. 2016. “Cold-spots in Protein Binding.” Trends Biochem Sci, 41(9), Pp. 739-45.
+
+
+2) Sagara N. S. Gurusinghe, Ben Oppenheiner, and Julia M. Shifman. 9/21/2022."Cold Spots are Universal in protein- protein interactions",  Protein Science, 31, 10, Pp. e4435.
+
+   
+Contact: 
+If you encounter any problems of errors with running this notebook please contact Sagara Gurushighe (sagara.gurusinghe@mail.huji.ac.il).
+
+
+ We recommend using either **Google Chrome** or **Mozilla Firefox** to effectively utilize and navigate through this Colab page.  

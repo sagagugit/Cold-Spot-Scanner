@@ -38,7 +38,7 @@ Please cite the articles
 
    
 Contact: 
-If you encounter any problems of errors with running this notebook please contact Sagara Gurushighe (sagara.gurusinghe@mail.huji.ac.il).
+If you encounter any problems of errors with running this notebook please contact Sagara Gurushighe (sagara.gurusinghe@mail.huji.ac.il) or Julia M. Shifman (jshifman@mail.huji.ac.il).
 
 
  We recommend using either **Google Chrome** or **Mozilla Firefox** to effectively utilize and navigate through this Colab page.  

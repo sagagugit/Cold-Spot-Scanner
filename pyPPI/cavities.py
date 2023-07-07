@@ -85,7 +85,7 @@ def createRandPoints(interface):
     for i in range(0, 3):
         axisCoords = [a.coord[i] for a in interface]
         try:
-            boundingBox.append(((min(axisCoords)+1), (max(axisCoords)-1)))
+            boundingBox.append(((min(axisCoords), (max(axisCoords)))
         except:
         	continue
     

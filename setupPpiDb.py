@@ -40,7 +40,7 @@ import pandas as pd
 """
 Distance in angtroms between the chains that is relevant for defining the interface
 """
-INTERFACE_DISTANCE = 1
+INTERFACE_DISTANCE = 2
 WORKING_DIRECTORY = './'
 PDBS_DIR = "./pdbs/"
 RESULTS_DIR = "./results/"

@@ -669,6 +669,92 @@ def calcEnergyTerms(pdbsToAnalyze):
                     if struct:
                         pdb_io.set_structure(struct)
                         pdb_io.save(open_file)
+        for pdbName, chains  in pdbsNamesToChains.items():
+        if pdbName[0:4] not in pdbsNamesToChains: continue
+        pdb_path = '%s_cavities.pdb' % pdbName[0:4]
+        pdb = PDBReader.readFile(pdb_path)
+        path = os.mkdir(os.path.join('results/cold_spots', '{}'.format(pdbName[0:4])))
+        parser = PDBParser( PERMISSIVE=1)
+        pdb_io = PDB.PDBIO()
+        try:
+            structure1 = parser.get_structure(pdb.file, '%s_seperated.pdb' % pdb.name)
+                #structure = parser.get_structure(pdb.file, '%s.pdb' % pdb.name)
+
+
+            x = []
+            for chain in structure1.get_chains():
+                if chain.id != '-':
+                    x.append(chain.center_of_mass())
+            if not x:
+                x.append(1000)
+            
+
+
+                            
+            alpha = {}
+            beta = {}
+            structure = parser.get_structure('c', '%s.pdb' % pdb.name)
+            for model in structure:
+                        for chain1 in model:
+                            for residue in chain1:
+                                for atom in residue:
+                                    residue_id = residue.get_full_id()
+                                    if atom.get_name() == 'CA':
+                                        alpha[residue.get_resname() + str(residue_id[3][1])+ str(residue_id[2])] = []
+                                        alpha[residue.get_resname() + str(residue_id[3][1])+ str(residue_id[2])].append(atom.get_coord())
+                                    if atom.get_name() == 'CB':
+                                        beta[residue.get_resname() + str(residue_id[3][1])+ str(residue_id[2])] = []
+                                        beta[residue.get_resname() + str(residue_id[3][1])+ str(residue_id[2])].append(atom.get_coord())
+
+
+            d = []
+            x1=np.array(x)
+            alpha_dic = {}   
+            #beta_dic = {}
+            for m, n in enumerate(x1):
+                for r, k in alpha.items():
+                    distance = np.linalg.norm(n - k)
+                    alpha_dic[r] = []
+                    alpha_dic[r].append(distance)
+                #print(str(m) + ":" + str(min(alpha_dic.items(), key=lambda b: b[1])))
+                    d.append(
+                        {
+                            'Chain': m,
+                            'Residue': r,
+                            'distance' : distance
+                    
+                        })
+
+            df=pd.DataFrame(d)
+
+            e = []
+            x1=np.array(x)
+            beta_dic = {}
+            for g, h in enumerate(x1):
+                for s, l in beta.items():
+                    distance1 = np.linalg.norm(h - l)
+                    beta_dic[s] = []
+                    beta_dic[s].append(distance1)
+                #print(str(g)+ ":" + (str(beta_dic.items())))
+                #print(str(g) + ":" + ''.join("{}: {}".format(k, v) for k, v in beta_dic.items()))
+                    e.append(
+                        {
+                            'Chain': g,
+                            'Residue': s,
+                            'distance' : distance1
+                        })
+
+            df1=pd.DataFrame(e)
+            new_df = pd.merge(df, df1,  how='left', on=['Chain','Residue'])
+            new_df=new_df.replace(np.nan,0.1)
+
+            True_False = np.where(new_df["distance_x"] > new_df["distance_y"], True, False)
+            new_df["equal"] = True_False
+            result= new_df.loc[new_df['equal']==True]
+            result_2=result.groupby('Chain', group_keys=False).apply(lambda x: x.loc[x.distance_x.idxmin()])
+            result_2.to_csv('results/cold_spots/{}/dis.csv'.format(pdbName[0:4]), sep=str(','), header=False)
+        except:
+            pass
 
         
 

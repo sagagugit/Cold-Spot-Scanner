@@ -754,7 +754,7 @@ def calcEnergyTerms(pdbsToAnalyze):
             new_df["equal"] = True_False
             result= new_df.loc[new_df['equal']==True]
             result_2=result.groupby('Chain', group_keys=False).apply(lambda x: x.loc[x.distance_x.idxmin()])
-            result_2.to_csv('results/cold_spots/{}/dis.csv'.format(pdbName[0:4]), sep=str(','), header=True)
+            result_2.to_csv('results/cold_spots/dis.csv', sep=str(','), header=True)
         except:
             pass
 

@@ -754,12 +754,12 @@ def calcEnergyTerms(pdbsToAnalyze):
             new_df["equal"] = True_False
             result= new_df.loc[new_df['equal']==True]
             result_2=result.groupby('Chain', group_keys=False).apply(lambda x: x.loc[x.distance_x.idxmin()])
-            result_2 = result_2.iloc[:, [1, 2]]
-            result_2.drop(columns=['distance_x'], inplace=True)
-            result_2 = result_2.assign(Residue_number=result_2['Residue'].str[3:-1], Chain=result_2['Residue'].str[-1:])
-            result_2.drop(columns=['Residue'], inplace=True)
-            result_2.columns = ['Cavity_Number', 'Residue_number', 'Chain']
-            result_2.to_csv('results/cold_spots/dis.csv', sep=str(','), header=True)
+            result_3 = result_2.iloc[:, [1, 2]]
+            result_3.drop(columns=['distance_x'], inplace=True)
+            result_3 = result_3.assign(Residue_number=result_3['Residue'].str[3:-1], Chain=result_3['Residue'].str[-1:])
+            result_3.drop(columns=['Residue'], inplace=True)
+            result_3.columns = ['Cavity_Number', 'Residue_number', 'Chain']
+            result_3.to_csv('results/cold_spots/dis.csv', sep=str(','), header=True)
         except:
             pass
 

@@ -755,7 +755,7 @@ def calcEnergyTerms(pdbsToAnalyze):
             result= new_df.loc[new_df['equal']==True]
             result_2=result.groupby('Chain', group_keys=False).apply(lambda x: x.loc[x.distance_x.idxmin()])
             result_2 = result_2.iloc[:, [1, 2]]
-            result_2 = result_2.rename(columns={'Chain': 'Cavity_number'}, inplace=True)
+            result_2.rename(columns={'Chain': 'Cavity_number'}, inplace=True)
    #         result_2.drop(columns=['distance_x'], inplace=True)
             result_2 = result_2.assign(Chain=result_2['Residue'].str[3:-1], Residue_number=result_2['Residue'].str[-1:])
             result_2.drop(columns=['Residue'], inplace=True)

@@ -674,7 +674,7 @@ def calcEnergyTerms(pdbsToAnalyze):
         if pdbName[0:4] not in pdbsNamesToChains: continue
         pdb_path = '%s_cavities.pdb' % pdbName[0:4]
         pdb = PDBReader.readFile(pdb_path)
-        path = os.mkdir(os.path.join('results/cold_spots', '{}'.format(pdbName[0:4])))
+     #   path = os.mkdir(os.path.join('results/cold_spots', '{}'.format(pdbName[0:4])))
         parser = PDBParser( PERMISSIVE=1)
         pdb_io = PDB.PDBIO()
         try:

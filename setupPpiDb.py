@@ -721,7 +721,7 @@ def calcEnergyTerms(pdbsToAnalyze):
                 #print(str(m) + ":" + str(min(alpha_dic.items(), key=lambda b: b[1])))
                     d.append(
                         {
-                            'Chain': m,
+                            'Cavity_number': m,
                             'Residue': r,
                             'distance' : distance
                     
@@ -741,26 +741,26 @@ def calcEnergyTerms(pdbsToAnalyze):
                 #print(str(g) + ":" + ''.join("{}: {}".format(k, v) for k, v in beta_dic.items()))
                     e.append(
                         {
-                            'Chain': g,
+                            'Cavity_number': g,
                             'Residue': s,
                             'distance' : distance1
                         })
 
             df1=pd.DataFrame(e)
-            new_df = pd.merge(df, df1,  how='left', on=['Chain','Residue'])
+            new_df = pd.merge(df, df1,  how='left', on=['Cavity_number','Residue'])
             new_df=new_df.replace(np.nan,0.1)
 
             True_False = np.where(new_df["distance_x"] > new_df["distance_y"], True, False)
             new_df["equal"] = True_False
             result= new_df.loc[new_df['equal']==True]
-            result_2=result.groupby('Chain', group_keys=False).apply(lambda x: x.loc[x.distance_x.idxmin()])
-            #result_3 = result_2.iloc[:, [1, 2]]
+            result_2=result.groupby('Cavity_number', group_keys=False).apply(lambda x: x.loc[x.distance_x.idxmin()])
+            result_3 = result_2.iloc[:, [1, 2]]
             #result_3.drop(columns=['distance_x'], inplace=True)
             result_3 = result_3.assign(Residue_number=result_3['Residue'].str[3:-1], Chain=result_3['Residue'].str[-1:])
             result_3.drop(columns=['Residue'], inplace=True)
             result_3.columns = ['distance', 'Residue_number', 'Chain']
             result_3.drop(columns=['distance'], inplace=True)
-            result_3.columns = ['Cavity_number', 'Residue_number', 'Cn']
+            #result_3.columns = ['Cavity_number', 'Residue_number', 'Cn']
             result_3.to_csv('results/cold_spots/Cold_spots_due_to_cavities.csv', sep=str(','), header=True)
         except:
             pass

@@ -632,7 +632,7 @@ def calcEnergyTerms(pdbsToAnalyze):
                     if x == -1 :
                         total_cavities_2 = total_cavities - 1
                         print('No of Cold spots due to cavities :', total_cavities_2, file=cluster_file)
-                    else:
+                    elif x == 0:
                         print('No of Cold spots due to cavities :', total_cavities, file=cluster_file)
                         
            

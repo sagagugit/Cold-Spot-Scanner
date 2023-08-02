@@ -847,7 +847,7 @@ def calcEnergyTerms(pdbsToAnalyze):
             for index, row in Cavity_df.iterrows():
                 print('select resi ', row['residue'], "and chain ", row['chain'], file=cold_file4)
                 print('show sticks, (sele)', file=cold_file4)
-                print('color orange, (sele)', file=cold_file4)
+                print('color red, (sele)', file=cold_file4)
         except:
             pass
 

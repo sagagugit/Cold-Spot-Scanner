@@ -857,11 +857,12 @@ def calcEnergyTerms(pdbsToAnalyze):
 
 
     with open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Identified_cold_spots.csv'),mode = 'w') as cold_file3:
-        with open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'No_of_cold_spots_due_to_cavities.csv')) as f1, open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold_spots_residues_due_to_CH_interactions.csv')) as f2, open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold_spots_due_to_SC_interactions.csv')) as f3:
+        with open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'No_of_cold_spots_due_to_cavities.csv')) as f1, open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold_spots_residues_due_to_CH_interactions.csv')) as f2, open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold_spots_due_to_SC_interactions.csv')) as f3, open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold_spots_due_to_cavities.csv')) as f4:
             line_file1 = f1.read()
             line_file2 = f2.read()
             line_file3 = f3.read()
-            print(line_file2,'\n',line_file3,'\n',line_file1,'\n', file=cold_file3)
+            line_file4 = f4.read()
+            print(line_file2,'\n',line_file3,'\n',line_file1,'\n',line_file4,'\n', file=cold_file3)
 
    #         os.remove(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, "No_of_cold_spots_due_to_cavities.csv"))
   #          os.remove(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, "Cold_spots_residues_due_to_CH_interactions.csv"))

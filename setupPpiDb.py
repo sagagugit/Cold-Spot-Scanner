@@ -760,6 +760,7 @@ def calcEnergyTerms(pdbsToAnalyze):
             result_3.drop(columns=['Residue'], inplace=True)
             result_3.columns = ['distance', 'Residue_number', 'Chain']
             result_3.drop(columns=['distance'], inplace=True)
+            result_3.columns = ['Cavity_number', 'Residue_number', 'Chain']
             result_3.to_csv('results/cold_spots/dis.csv', sep=str(','), header=True)
         except:
             pass

@@ -845,18 +845,45 @@ def calcEnergyTerms(pdbsToAnalyze):
         except:
             pass
 
-
-
-    with open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Identified_cold_spots.csv'),mode = 'w') as cold_file3:
-        with open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'No_of_cold_spots_due_to_cavities.csv')) as f1, open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold_spots_residues_due_to_CH_interactions.csv')) as f2, open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold_spots_due_to_SC_interactions.csv')) as f3, open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold_spots_due_to_cavities.csv')) as f4:
+    try:
+        with open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'No_of_cold_spots_due_to_cavities.csv')) as f1:
             line_file1 = f1.read()
-            line_file2 = f2.read()
-            line_file3 = f3.read()
-            line_file4 = f4.read()
-            print(line_file2,'\n',line_file3,'\n',line_file1,'\n',line_file4,'\n', file=cold_file3)
+    except FileNotFoundError:
+        line_file1 = "No of Cold spots due to cavities : 0"
 
-            os.remove(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, "No_of_cold_spots_due_to_cavities.csv"))
-            os.remove(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, "Cold_spots_due_to_cavities.csv"))
+    try:
+        with open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold_spots_residues_due_to_CH_interactions.csv')) as f2:
+            line_file2 = f2.read()
+    except FileNotFoundError:
+        line_file2 = ''
+
+    try:
+        with open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold_spots_due_to_SC_interactions.csv')) as f3:
+            line_file3 = f3.read()
+    except FileNotFoundError:
+        line_file3 = ''
+
+    try:
+        with open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold_spots_due_to_cavities.csv')) as f4:
+            line_file4 = f4.read()
+    except FileNotFoundError:
+        line_file4 = ''
+
+    with open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Identified_cold_spots.csv'), mode='w') as cold_file3:
+        print(line_file2, '\n', line_file3, '\n', line_file1, '\n', line_file4, '\n', file=cold_file3)
+
+
+
+    # with open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Identified_cold_spots.csv'),mode = 'w') as cold_file3:
+    #     with open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'No_of_cold_spots_due_to_cavities.csv')) as f1, open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold_spots_residues_due_to_CH_interactions.csv')) as f2, open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold_spots_due_to_SC_interactions.csv')) as f3, open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'Cold_spots_due_to_cavities.csv')) as f4:
+    #         line_file1 = f1.read()
+    #         line_file2 = f2.read()
+    #         line_file3 = f3.read()
+    #         line_file4 = f4.read()
+    #         print(line_file2,'\n',line_file3,'\n',line_file1,'\n',line_file4,'\n', file=cold_file3)
+
+    #         os.remove(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, "No_of_cold_spots_due_to_cavities.csv"))
+    #         os.remove(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, "Cold_spots_due_to_cavities.csv"))
   #          os.remove(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, "Cold_spots_residues_due_to_CH_interactions.csv"))
  #           os.remove(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, "Cold_spots_due_to_SC_interactions.csv"))
 

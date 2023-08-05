@@ -844,15 +844,6 @@ def calcEnergyTerms(pdbsToAnalyze):
                 print('color blue, (sele)', file=cold_file4)
         except:
             pass
-        try:
-            Cavity_df  = pd.read_csv(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, "Cold_spots_due_to_cavities.csv"), sep=',', skiprows=1, header=None)
-            Cavity_df.columns = ["PDB", "chain", "residue"]
-            for index, row in Cavity_df.iterrows():
-                print('select resi ', row['residue'], "and chain ", row['chain'], file=cold_file4)
-                print('show sticks, (sele)', file=cold_file4)
-                print('color red, (sele)', file=cold_file4)
-        except:
-            pass
 
 
 

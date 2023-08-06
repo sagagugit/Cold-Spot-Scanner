@@ -75,21 +75,28 @@ def calculateVolume(pdb, interface):
 
     return cavitiesVolume
     
-def createRandPoints(interface):
-    
+def createRandPoints(interface, top_reduction_factor=0.1, bottom_reduction_factor=0.1):
     ACCURACY = 1.0 ** 3
     ACCURACY_FACTOR = 10.0
 
-    # find bounding box
+    # Find bounding box with reduced top and bottom size
     boundingBox = []
     for i in range(0, 3):
         axisCoords = [a.coord[i] for a in interface]
-        try:
-            boundingBox.append((min(axisCoords), max(axisCoords)))
-        except:
-        	continue
-    
-    distances = [maxAxis - minAxis for minAxis, maxAxis in boundingBox]
+        minAxis = min(axisCoords)
+        maxAxis = max(axisCoords)
+
+        # Calculate the reduced size for top and bottom
+        top_reduction = (maxAxis - minAxis) * top_reduction_factor
+        bottom_reduction = (maxAxis - minAxis) * bottom_reduction_factor
+
+        # Apply reductions to top and bottom bounds
+        boundingBox.append((minAxis + bottom_reduction, maxAxis - top_reduction))
+
+    # Convert boundingBox to NumPy array
+    boundingBox = np.array(boundingBox)
+
+    distances = boundingBox[:, 1] - boundingBox[:, 0]
     allVolume = np.prod(distances)
     pointsToCheck = int((ACCURACY_FACTOR * (allVolume / ACCURACY)) * 2)
     np.random.seed(2021)
@@ -97,7 +104,7 @@ def createRandPoints(interface):
     for i, min_max in enumerate(boundingBox):
         rand_points[:, i] *= min_max[1] - min_max[0]
         rand_points[:, i] += min_max[0]
-    
+
     return rand_points, pointsToCheck, allVolume
 
 def inInterface(rand_points, pdb, interface):

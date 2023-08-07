@@ -628,12 +628,17 @@ def calcEnergyTerms(pdbsToAnalyze):
                 clusters = Counter(labels)
                 total_volume = sum(Counter(labels).values())
                 total_cavities = len(Counter(labels))
-                for x, y in clusters.items():
-                    if x == -1 :
-                        total_cavities_2 = total_cavities - 1
-                        print('No of Cold spots due to cavities :', total_cavities_2, file=cluster_file)
-                    elif x == 0:
-                        print('No of Cold spots due to cavities :', total_cavities, file=cluster_file)
+                # for x, y in clusters.items():
+                #     if x == -1 :
+                #         total_cavities_2 = total_cavities - 1
+                #         print('No of Cold spots due to cavities :', total_cavities_2, file=cluster_file)
+                #     elif x == 0:
+                #         print('No of Cold spots due to cavities :', total_cavities, file=cluster_file)
+                filtered_clusters = {label: count for label, count in clusters.items() if label != -1}
+
+                # Print the number of clusters (excluding cluster with label "-1")
+                num_clusters = len(filtered_clusters)
+                print('No of Cold spots due to cavities :', num_clusters, file=cluster_file)
                         
            
 

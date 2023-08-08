@@ -75,7 +75,7 @@ def calculateVolume(pdb, interface):
 
     return cavitiesVolume
     
-def createRandPoints(interface, top_reduction_factor=0.03, bottom_reduction_factor=0.01):
+def createRandPoints(interface, top_reduction_factor=0.04, bottom_reduction_factor=0.01):
     ACCURACY = 1.0 ** 3
     ACCURACY_FACTOR = 10.0
 

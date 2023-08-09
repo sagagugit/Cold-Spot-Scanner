@@ -99,7 +99,7 @@ def createRandPoints(interface, top_reduction_factor=0.05, bottom_reduction_fact
     distances = boundingBox[:, 1] - boundingBox[:, 0]
     allVolume = np.prod(distances)
     pointsToCheck = int((ACCURACY_FACTOR * (allVolume / ACCURACY)) * 2)
-    np.random.seed(2021)
+    np.random.seed(2023)
     rand_points = np.random.rand(pointsToCheck, 3)
     for i, min_max in enumerate(boundingBox):
         rand_points[:, i] *= min_max[1] - min_max[0]

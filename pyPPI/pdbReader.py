@@ -52,8 +52,6 @@ class PDBReader(object):
             
         # read file for chain atoms and water
         for line in pdbFile.readlines():
-            if line[0:10] == 'REMARK 470':
-                m_residue, m_chain, m_no  = line[15:18].strip(' '), line[19:20].strip(' '), line[20:24].strip(' ')
             if line[0:6] == 'ATOM  ' or line[0:6] == 'HETATM':
                 atom_or_hetem = line[0:6].strip(' ')
                 atomNum, atomSymbol = line[6:11].strip(' '), line[12:16].strip(' ')

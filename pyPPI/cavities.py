@@ -77,7 +77,7 @@ def calculateVolume(pdb, interface):
     
 def createRandPoints(interface, top_reduction_factor=0.05, bottom_reduction_factor=0.01):
     ACCURACY = 1.0 ** 3
-    ACCURACY_FACTOR = 20.0
+    ACCURACY_FACTOR = 10.0
 
     # Find bounding box with reduced top and bottom size
     boundingBox = []

@@ -621,7 +621,7 @@ def calcEnergyTerms(pdbsToAnalyze):
         pdb = PDBReader.readFile(pdb_path)
         diffrent_files =seperating_cavities(pdb)
         if diffrent_files:  
-            db = DBSCAN(eps=2, min_samples=10).fit(diffrent_files)
+            db = DBSCAN(eps=2, min_samples=11).fit(diffrent_files)
             with open(os.path.join(RESULTS_DIR, COLD_SPOTS_DIR, 'No_of_cold_spots_due_to_cavities.csv'), mode= 'w') as cluster_file:
                 
                 labels = db.labels_
